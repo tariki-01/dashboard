@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>他力本願男が誕生までの秘話 | 他力本願FX</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #1a1a24;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --text: #e8e6e0;
+      --text-muted: #8a8880;
+      --accent: #4a9eff;
+      --border: rgba(201,168,76,0.15);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .site-header {
+      background: rgba(10,10,15,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    /* Article */
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 60%, var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-meta .date::before { content: "📅 "; }
+    .article-meta .author::before { content: "✍️ "; }
+
+    /* Hero image area */
+    .article-hero {
+      background: linear-gradient(135deg, var(--surface2) 0%, #1e1e2e 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 48px 32px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .article-hero .hero-emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    /* Content */
+    .article-body {
+      font-size: 1rem;
+      color: #ccc8c0;
+    }
+    .article-body h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 48px 0 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--gold);
+    }
+    .article-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 32px 0 12px;
+    }
+    .article-body p {
+      margin-bottom: 20px;
+    }
+    .article-body strong {
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+    .article-body em {
+      color: var(--text);
+      font-style: normal;
+      background: rgba(201,168,76,0.08);
+      padding: 0 4px;
+      border-radius: 3px;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .highlight-box p { margin-bottom: 8px; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    /* Timeline */
+    .timeline {
+      margin: 32px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .timeline li {
+      position: relative;
+      padding: 0 0 28px 32px;
+      border-left: 2px solid var(--border);
+      margin-left: 12px;
+    }
+    .timeline li:last-child { padding-bottom: 0; border-left-color: transparent; }
+    .timeline li::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      position: absolute;
+      left: -6px;
+      top: 6px;
+    }
+    .timeline li .tl-label {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .timeline li p { margin-bottom: 0; font-size: 0.95rem; }
+
+    /* CTA */
+    .article-cta {
+      background: linear-gradient(135deg, var(--surface2), #1e1e2e);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .article-cta h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .article-cta p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .article-cta a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .article-cta a:hover { opacity: 0.85; }
+
+    /* Nav */
+    .article-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .article-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .article-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .article-wrap { padding: 40px 16px 80px; }
+      .article-hero { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="taryoku-lp.html">他力本願FX</a>
+  <a class="back-link" href="taryoku-lp.html">← サイトに戻る</a>
+</header>
+
+<main class="article-wrap">
+  <span class="article-category">ストーリー</span>
+  <h1 class="article-title">他力本願男が誕生までの秘話</h1>
+  <div class="article-meta">
+    <span class="date">2026年3月26日</span>
+    <span class="author">他力本願男</span>
+  </div>
+
+  <div class="article-hero">
+    <span class="hero-emoji">🕵️</span>
+    <p>なぜ「他力本願」という名前なのか。<br>その答えはここにある。</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>はじめまして。「他力本願男」です。</p>
+    <p>このブログを読んでくれているあなたは、FXや投資に興味があるか、あるいは「他力本願ってどういうこと？」と疑問を持ってクリックしてくれたのかもしれません。</p>
+    <p>今日は、なぜ私が「他力本願」と名乗るようになったのか、その背景にある<strong>ちょっと恥ずかしくて、でもリアルな話</strong>をしようと思います。</p>
+
+    <h2>社会人3ヶ月で仕事を辞めた話</h2>
+    <p>私は大学を卒業後、普通に就職しました。でも、<strong>3ヶ月で辞めました。</strong></p>
+    <p>理由は単純です。毎朝満員電車に乗って、上司に怒られて、残業して、それが一生続くのかと思ったら、体が動かなくなりました。「これが自分の人生なのか」という感覚が拭えなくて。</p>
+    <p>今振り返れば甘えだったかもしれないけど、当時の私には本当に限界でした。</p>
+
+    <div class="highlight-box">
+      <p>仕事を辞めた後、私はフリーターになりました。バイト掛け持ちで月20万円くらい稼いで、何とか生活はできていた。でも「このままでいいのか」という焦りは常にありました。</p>
+    </div>
+
+    <h2>FXで300万円を失った</h2>
+    <p>「お金を増やせば自由になれる」——そう思って始めたのがFXでした。</p>
+    <p>最初は少額から。でも勉強もせず、感覚だけでトレードしていたら、<strong>あっという間に30万円が溶けました。</strong></p>
+    <p>「もっと勉強すれば取り返せる」と思って、YouTube、Twitter、有料コンテンツ。色々買いました。でも結果は変わらない。むしろ悪化した。</p>
+    <p>最終的に、FXで失った金額は<strong>約300万円</strong>に達しました。バイトで稼いだお金を全部注ぎ込んだようなものです。</p>
+
+    <h2>詐欺に25万円騙された</h2>
+    <p>お金を取り戻そうと焦っていたとき、SNSで「月利30%保証の自動売買ツール」という広告を見ました。</p>
+    <p>今なら絶対騙されないけど、当時の私は藁にもすがる気持ちでした。</p>
+    <p><strong>25万円を振り込んだ翌日、連絡が取れなくなりました。</strong></p>
+
+    <ul class="timeline">
+      <li>
+        <div class="tl-label">就職</div>
+        <p>大学卒業後、一般企業に就職</p>
+      </li>
+      <li>
+        <div class="tl-label">3ヶ月後</div>
+        <p>限界を感じて退職、フリーターに</p>
+      </li>
+      <li>
+        <div class="tl-label">FX開始</div>
+        <p>「お金で自由を」と思いFXをスタート</p>
+      </li>
+      <li>
+        <div class="tl-label">損失300万</div>
+        <p>知識なしのトレードで約300万円を失う</p>
+      </li>
+      <li>
+        <div class="tl-label">詐欺被害</div>
+        <p>「月利30%保証」の詐欺に25万円を騙される</p>
+      </li>
+      <li>
+        <div class="tl-label">転機</div>
+        <p>師匠との出会い、コピートレードへ</p>
+      </li>
+    </ul>
+
+    <h2>師匠との出会い</h2>
+    <p>もう投資は諦めようと思っていた頃、知人の紹介で一人の人物と出会いました。</p>
+    <p>その人は派手さとは無縁で、淡々とした雰囲気の人でした。でも話を聞いてみると、<strong>FXで安定した実績を10年以上積み上げている</strong>ということがわかりました。</p>
+    <p>「なぜ勝てるんですか？」と聞いたら、こう返ってきました。</p>
+
+    <div class="highlight-box">
+      <p>「勝とうとするから負けるんだよ。<br>自分の感情を排除して、ルール通りに動くだけ。」</p>
+    </div>
+
+    <p>この言葉が、私の全てを変えました。</p>
+    <p>師匠の手法を学びながら、コピートレードという形で師匠のトレードをそのまま自分の口座に反映させる。それが「他力本願投資」の始まりでした。</p>
+
+    <h2>なぜ「他力本願」なのか</h2>
+    <p>「他力本願」というのは、仏教用語で「他の力に頼って救われる」という意味です。自力でなく、より優れた力に委ねること。</p>
+    <p>私がFXで失敗し続けたのは、<strong>自分の力だけで勝とうとしたから</strong>でした。</p>
+    <p>師匠という確かな実績を持つ存在に「他力本願」する。それが私の答えでした。</p>
+    <p>恥ずかしいけど、これが私の本当のストーリーです。同じように悩んでいる人に、少しでも参考になれば嬉しいです。</p>
+
+  </div>
+
+  <div class="article-cta">
+    <h3>実績・詳細はこちら</h3>
+    <p>他力本願投資の実際の運用成績や詳細情報はトップページでご確認ください。</p>
+    <a href="taryoku-lp.html">トップページを見る →</a>
+  </div>
+
+  <nav class="article-nav">
+    <span></span>
+    <a href="blog2.html">次の記事：師匠から教わったこと →</a>
+  </nav>
+</main>
+
+</body>
+</html>

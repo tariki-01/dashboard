@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>努力しない副業という選択｜他力本願投資という考え方 | 他力本願FX</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #1a1a24;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --text: #e8e6e0;
+      --text-muted: #8a8880;
+      --accent: #4a9eff;
+      --border: rgba(201,168,76,0.15);
+      --green: #4fc88a;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .site-header {
+      background: rgba(10,10,15,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 60%, var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-meta .date::before { content: "📅 "; }
+    .article-meta .author::before { content: "✍️ "; }
+
+    .article-hero {
+      background: linear-gradient(135deg, var(--surface2) 0%, #1a2e1e 100%);
+      border: 1px solid rgba(79,200,138,0.15);
+      border-radius: 12px;
+      padding: 48px 32px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .article-hero .hero-emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .article-body {
+      font-size: 1rem;
+      color: #ccc8c0;
+    }
+    .article-body h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 48px 0 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--gold);
+    }
+    .article-body p { margin-bottom: 20px; }
+    .article-body strong { color: var(--gold-light); font-weight: 700; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .highlight-box p { margin-bottom: 8px; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    /* Failed attempts */
+    .fail-list {
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .fail-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .fail-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .fail-content h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .fail-content p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Concept box */
+    .concept-box {
+      background: linear-gradient(135deg, rgba(79,200,138,0.06), rgba(79,200,138,0.02));
+      border: 1px solid rgba(79,200,138,0.2);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .concept-box h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .concept-box p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Steps */
+    .steps {
+      counter-reset: step-counter;
+      margin: 32px 0;
+    }
+    .step {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .step-num {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-weight: 800;
+      font-size: 0.85rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content p { margin-bottom: 0; font-size: 0.9rem; }
+    .step-content strong { color: var(--text); }
+
+    .article-cta {
+      background: linear-gradient(135deg, var(--surface2), #1e1e2e);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .article-cta h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .article-cta p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .article-cta a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .article-cta a:hover { opacity: 0.85; }
+
+    .article-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .article-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .article-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .article-wrap { padding: 40px 16px 80px; }
+      .article-hero { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="taryoku-lp.html">他力本願FX</a>
+  <a class="back-link" href="taryoku-lp.html">← サイトに戻る</a>
+</header>
+
+<main class="article-wrap">
+  <span class="article-category">副業・投資</span>
+  <h1 class="article-title">努力しない副業という選択｜他力本願投資という考え方</h1>
+  <div class="article-meta">
+    <span class="date">2026年3月22日</span>
+    <span class="author">他力本願男</span>
+  </div>
+
+  <div class="article-hero">
+    <span class="hero-emoji">💡</span>
+    <p>「努力しないとダメ」という常識を疑う。<br>正しい方向に力を向ければ、<strong>結果は変わる。</strong></p>
+  </div>
+
+  <div class="article-body">
+
+    <p>「副業で稼ぎたい」——そう思って色々やってみた経験、ありませんか？</p>
+    <p>私はあります。そして、ほぼ全て失敗しました。</p>
+    <p>今回は、私が試した副業の失敗談と、それを経て辿り着いた「他力本願投資」という考え方についてお話しします。</p>
+
+    <h2>私が失敗してきた副業たち</h2>
+    <p>フリーターになってから、お金を増やすために色々と試しました。</p>
+
+    <div class="fail-list">
+      <div class="fail-item">
+        <div class="fail-icon">📝</div>
+        <div class="fail-content">
+          <h4>ブログ</h4>
+          <p>半年書き続けたが、月収は最高でも2,000円。SEOの壁は厚かった。</p>
+        </div>
+      </div>
+      <div class="fail-item">
+        <div class="fail-icon">🎬</div>
+        <div class="fail-content">
+          <h4>YouTube</h4>
+          <p>顔出しできないと伸びないと痛感。3ヶ月で挫折。登録者は200人止まり。</p>
+        </div>
+      </div>
+      <div class="fail-item">
+        <div class="fail-icon">📦</div>
+        <div class="fail-content">
+          <h4>転売・せどり</h4>
+          <p>仕入れに走り回って、利益は月1〜2万円。時給換算したら最低賃金以下だった。</p>
+        </div>
+      </div>
+      <div class="fail-item">
+        <div class="fail-icon">📈</div>
+        <div class="fail-content">
+          <h4>FX（自己トレード）</h4>
+          <p>勉強に時間を使い、でも感情に負けて、最終的に15万円の損失。</p>
+        </div>
+      </div>
+    </div>
+
+    <p>これだけやって、結果はほぼゼロかマイナス。時間とお金を大量に消費しました。</p>
+
+    <h2>「努力すれば報われる」は本当か</h2>
+    <p>私は頑張ってきたと思います。ブログは毎日書いた。YouTubeは台本を考えて撮影して編集した。せどりは週末に何時間もお店を回った。</p>
+    <p>でも、結果は出なかった。</p>
+
+    <div class="highlight-box">
+      <p>「努力が足りないから失敗する」という考え方は、ある意味呪縛です。<br>努力の方向が間違っていれば、どれだけ頑張っても結果は出ない。<br><strong>大切なのは「何に」努力するかです。</strong></p>
+    </div>
+
+    <h2>師匠との出会い、そして気づき</h2>
+    <p>何度目かの失敗の後、師匠と出会いました。師匠から言われた一言が今でも忘れられません。</p>
+
+    <div class="highlight-box">
+      <p>「お前、なんで全部自分でやろうとするんだ。<br>得意な人に任せれば、もっと早く結果が出る。<br>それって<strong>努力の放棄じゃなくて、賢い選択</strong>だろ。」</p>
+    </div>
+
+    <p>ハッとしました。私は「自分でやること」が美徳だと思い込んでいた。でも、投資の世界では、優れたトレーダーのシステムを活用することは「楽をすること」ではなく、「正しい選択」なんだと。</p>
+
+    <h2>他力本願投資とは何か</h2>
+
+    <div class="concept-box">
+      <h3>他力本願投資</h3>
+      <p>実績のある投資家のトレードをコピーすることで、<br>自分がトレードを学ばなくても<br>プロの運用の恩恵を受ける投資スタイル</p>
+    </div>
+
+    <p>具体的には以下のような仕組みです。</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <p><strong>実績のある投資家（師匠）</strong>が日々トレードを行う</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <p>そのトレードが<strong>自動的に自分の口座にコピー</strong>される</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <p>自分はチャートを見なくてもいい。<strong>日常生活を続けながら運用</strong>できる</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <p>プロの判断・技術・経験が<strong>そのまま自分の運用成果に反映</strong>される</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>「努力しない」は「考えない」ではない</h2>
+    <p>誤解してほしくないのですが、「他力本願」というのは「何も考えない」ということではありません。</p>
+    <p>どの投資家を選ぶか、どれくらいの資金を入れるか、リスク管理はどうするか——これらは自分で判断する必要があります。</p>
+    <p>でも、「チャートを読む」「感情を消す」「毎日トレードをする」という部分を、実績のあるプロに委ねる。その分の時間とエネルギーを、自分の本業や生活に使える。</p>
+
+    <div class="highlight-box">
+      <p>副業に何十時間もかけて月2,000円を稼ぐより、<br>正しい仕組みに乗って、本業に集中する。<br>これが<strong>私が選んだ、スマートな副業の形</strong>です。</p>
+    </div>
+
+    <p>あなたも「努力が足りないから稼げない」という思い込みから一度離れて、別の選択肢を考えてみてください。</p>
+
+  </div>
+
+  <div class="article-cta">
+    <h3>実績・詳細はこちら</h3>
+    <p>他力本願投資の実際の運用成績や詳細情報はトップページでご確認ください。</p>
+    <a href="taryoku-lp.html">トップページを見る →</a>
+  </div>
+
+  <nav class="article-nav">
+    <a href="blog3.html">← 前の記事：FXは簡単じゃない</a>
+    <span></span>
+  </nav>
+</main>
+
+</body>
+</html>

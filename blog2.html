@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>師匠から教わったこと｜投資で負け続けた私が気づいた本当のこと | 他力本願FX</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #1a1a24;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --text: #e8e6e0;
+      --text-muted: #8a8880;
+      --accent: #4a9eff;
+      --border: rgba(201,168,76,0.15);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .site-header {
+      background: rgba(10,10,15,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 60%, var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-meta .date::before { content: "📅 "; }
+    .article-meta .author::before { content: "✍️ "; }
+
+    .article-hero {
+      background: linear-gradient(135deg, var(--surface2) 0%, #1e1e2e 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 48px 32px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .article-hero .hero-emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    .article-body {
+      font-size: 1rem;
+      color: #ccc8c0;
+    }
+    .article-body h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 48px 0 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--gold);
+    }
+    .article-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 32px 0 12px;
+    }
+    .article-body p { margin-bottom: 20px; }
+    .article-body strong { color: var(--gold-light); font-weight: 700; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .highlight-box p { margin-bottom: 8px; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    /* Lesson cards */
+    .lesson-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    .lesson-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .lesson-number {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-weight: 800;
+      font-size: 1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .lesson-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .lesson-content p { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+    .quote-block {
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin: 32px 0;
+      background: rgba(201,168,76,0.04);
+    }
+    .quote-block p {
+      font-size: 1.1rem;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .quote-block .quote-source {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: normal;
+      margin-bottom: 0;
+    }
+
+    .article-cta {
+      background: linear-gradient(135deg, var(--surface2), #1e1e2e);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .article-cta h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .article-cta p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .article-cta a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .article-cta a:hover { opacity: 0.85; }
+
+    .article-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .article-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .article-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .article-wrap { padding: 40px 16px 80px; }
+      .article-hero { padding: 32px 20px; }
+      .lesson-card { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="taryoku-lp.html">他力本願FX</a>
+  <a class="back-link" href="taryoku-lp.html">← サイトに戻る</a>
+</header>
+
+<main class="article-wrap">
+  <span class="article-category">マインドセット</span>
+  <h1 class="article-title">師匠から教わったこと｜投資で負け続けた私が気づいた本当のこと</h1>
+  <div class="article-meta">
+    <span class="date">2026年3月23日</span>
+    <span class="author">他力本願男</span>
+  </div>
+
+  <div class="article-hero">
+    <span class="hero-emoji">🎓</span>
+    <p>300万円を失って初めてわかった、<br>勝てるトレーダーとの本質的な違い。</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>前回の記事で、私がFXで約300万円を失い、詐欺にも遭い、それでも師匠との出会いで変わったという話をしました。</p>
+    <p>今回は、<strong>師匠から実際に何を教わったのか</strong>、そして私が長年気づけなかった「本当のこと」についてお話しします。</p>
+
+    <h2>損切りの話</h2>
+    <p>師匠に最初に言われたのは、損切りのことでした。</p>
+
+    <div class="quote-block">
+      <p>「お前、損切りできないだろ。」</p>
+      <p class="quote-source">— 師匠、初対面で開口一番</p>
+    </div>
+
+    <p>図星でした。私は損切りができなかった。「もう少し待てば戻るはず」と思って、ずるずると含み損を抱えて、最終的に大損する。そのパターンを何度も繰り返していました。</p>
+    <p>師匠は言いました。</p>
+
+    <div class="highlight-box">
+      <p>「損切りは損失じゃない。授業料でもない。<strong>リスク管理そのもの</strong>だ。損切りをしないトレーダーは、いずれ全てを失う。」</p>
+    </div>
+
+    <p>これは頭ではわかっていた。でも、実際にできていなかった。師匠から教わった一番最初の、そして最も重要な教えがこれでした。</p>
+
+    <h2>師匠から教わった3つのこと</h2>
+
+    <div class="lesson-cards">
+      <div class="lesson-card">
+        <div class="lesson-number">1</div>
+        <div class="lesson-content">
+          <h4>損切りを最優先にする</h4>
+          <p>エントリーより先に「どこで損切りするか」を決める。利益は後からついてくるが、損失は先にコントロールしなければならない。損切りができないトレーダーはどんな手法を学んでも最終的に負ける。</p>
+        </div>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-number">2</div>
+        <div class="lesson-content">
+          <h4>感情を排除した機械的トレード</h4>
+          <p>「勝ちたい」「取り返したい」「怖い」——これら全ての感情がトレードの邪魔をする。ルールを決めたら、そのルール通りに動くだけ。感情が入った瞬間にそのトレードは失敗する可能性が高まる。</p>
+        </div>
+      </div>
+      <div class="lesson-card">
+        <div class="lesson-number">3</div>
+        <div class="lesson-content">
+          <h4>1回のトレードで口座の2%以上のリスクを取らない</h4>
+          <p>どんなに自信があるトレードでも、1回で口座残高の2%以上のリスクを取ってはいけない。50回連続で負けても生き残れるサイジング。これがプロのリスク管理の基本。</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>なぜ私は今まで負け続けたのか</h2>
+    <p>師匠の話を聞いて、私がなぜ300万円を失ったのかがはっきりわかりました。</p>
+    <p>全部逆のことをしていたんです。</p>
+    <p>損切りしない。感情でトレードする。一発逆転を狙って大きなポジションを取る。これで勝てるわけがない。</p>
+
+    <div class="highlight-box">
+      <p>「初心者が負けるのは、手法の問題じゃない。<strong>マインドセットと資金管理の問題</strong>だ。どんな優れた手法も、メンタルが崩れたら意味がない。」</p>
+    </div>
+
+    <h2>コピートレードという答え</h2>
+    <p>師匠の教えを聞いて、私は正直に打ち明けました。</p>
+    <p>「わかりました。でも、私には感情を消してルール通りにトレードする自信がありません。」</p>
+    <p>師匠は少し考えてから言いました。</p>
+
+    <div class="quote-block">
+      <p>「じゃあ、俺のトレードをそのままコピーすればいい。お前が感情を持っていても、システムは感情を持たない。」</p>
+      <p class="quote-source">— 師匠</p>
+    </div>
+
+    <p>これが「他力本願投資」の始まりでした。</p>
+    <p>自分でトレードする必要はない。師匠という確かな実績を持つトレーダーの手法を、そのまま自分の口座に反映させる。それだけでいい。</p>
+    <p>自分の弱さを認めて、それを解決する方法を選ぶ。これが私の出した答えです。</p>
+
+    <h2>あなたへのメッセージ</h2>
+    <p>「FXで勝てない」と悩んでいるあなたへ。</p>
+    <p>おそらく手法の問題ではありません。師匠が言った通り、<strong>マインドセットと資金管理</strong>の問題です。</p>
+    <p>そして、もし「自分の感情をコントロールするのが難しい」と感じているなら、コピートレードという選択肢は一つの答えになるかもしれません。</p>
+    <p>自分の弱さを認めることは、弱さではありません。それが最初の一歩だと、私は思います。</p>
+
+  </div>
+
+  <div class="article-cta">
+    <h3>実績・詳細はこちら</h3>
+    <p>他力本願投資の実際の運用成績や詳細情報はトップページでご確認ください。</p>
+    <a href="taryoku-lp.html">トップページを見る →</a>
+  </div>
+
+  <nav class="article-nav">
+    <a href="blog1.html">← 前の記事：他力本願男が誕生までの秘話</a>
+    <a href="blog3.html">次の記事：FXは簡単じゃない →</a>
+  </nav>
+</main>
+
+</body>
+</html>

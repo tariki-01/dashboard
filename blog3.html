@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FXは簡単じゃない。初心者が9割負けると言われる理由 | 他力本願FX</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #1a1a24;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --text: #e8e6e0;
+      --text-muted: #8a8880;
+      --accent: #4a9eff;
+      --border: rgba(201,168,76,0.15);
+      --red: #e05a5a;
+      --green: #4fc88a;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .site-header {
+      background: rgba(10,10,15,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); }
+
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .article-category {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 60%, var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-meta .date::before { content: "📅 "; }
+    .article-meta .author::before { content: "✍️ "; }
+
+    .article-hero {
+      background: linear-gradient(135deg, #1e0a0a 0%, #2e1e1e 100%);
+      border: 1px solid rgba(224,90,90,0.2);
+      border-radius: 12px;
+      padding: 48px 32px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .article-hero .hero-emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-hero .stat {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--red);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .article-hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .article-body {
+      font-size: 1rem;
+      color: #ccc8c0;
+    }
+    .article-body h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 48px 0 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--gold);
+    }
+    .article-body p { margin-bottom: 20px; }
+    .article-body strong { color: var(--gold-light); font-weight: 700; }
+
+    /* Reason blocks */
+    .reason-block {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .reason-num {
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.85rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .reason-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .reason-block p { margin-bottom: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .highlight-box p { margin-bottom: 8px; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+
+    /* Compare table */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .compare-col {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .compare-col.bad { border-color: rgba(224,90,90,0.3); }
+    .compare-col.good { border-color: rgba(79,200,138,0.3); }
+    .compare-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .compare-col.bad h4 { color: var(--red); }
+    .compare-col.good h4 { color: var(--green); }
+    .compare-col ul { list-style: none; }
+    .compare-col ul li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .compare-col ul li:last-child { border-bottom: none; }
+    .compare-col.bad ul li::before { content: "✗ "; color: var(--red); }
+    .compare-col.good ul li::before { content: "✓ "; color: var(--green); }
+
+    .article-cta {
+      background: linear-gradient(135deg, var(--surface2), #1e1e2e);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .article-cta h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .article-cta p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .article-cta a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .article-cta a:hover { opacity: 0.85; }
+
+    .article-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .article-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .article-nav a:hover { color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .article-wrap { padding: 40px 16px 80px; }
+      .compare { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="taryoku-lp.html">他力本願FX</a>
+  <a class="back-link" href="taryoku-lp.html">← サイトに戻る</a>
+</header>
+
+<main class="article-wrap">
+  <span class="article-category">FX知識</span>
+  <h1 class="article-title">FXは簡単じゃない。初心者が9割負けると言われる理由</h1>
+  <div class="article-meta">
+    <span class="date">2026年3月22日</span>
+    <span class="author">他力本願男</span>
+  </div>
+
+  <div class="article-hero">
+    <span class="stat">9割</span>
+    <p>FXトレーダーのうち、長期的に利益を出し続けられるのは<br><strong>わずか1割</strong>と言われています。</p>
+  </div>
+
+  <div class="article-body">
+
+    <p>「FXで稼げる」という話を聞いて、やってみたけど全然勝てない——そんな人は多いはずです。</p>
+    <p>私もその一人でした。約300万円を失いました。</p>
+    <p>でも今は、なぜ初心者が負けるのかがはっきりわかります。今回はその理由を3つに絞って説明します。</p>
+
+    <h2>理由①：知識がないまま参入する</h2>
+
+    <div class="reason-block">
+      <div class="reason-header">
+        <div class="reason-num">1</div>
+        <h3>知識不足のまま参入する</h3>
+      </div>
+      <p>FXは「チャートを見て上がるか下がるかを予測する」だけに見えて、実際には経済指標、テクニカル分析、ファンダメンタル分析、リスク管理など、習得すべき知識が山ほどあります。野球のルールも知らずにプロと対戦するようなものです。</p>
+    </div>
+
+    <p>「YouTubeで勉強した」「有料の教材を買った」という人も多いですが、それで身についた気になっても、実際のトレードになると全く別の話です。知識と実践の間には大きな壁があります。</p>
+
+    <h2>理由②：感情でトレードする</h2>
+
+    <div class="reason-block">
+      <div class="reason-header">
+        <div class="reason-num">2</div>
+        <h3>感情に支配されたトレード</h3>
+      </div>
+      <p>損失が出ると「取り返したい」という心理が働き、冷静な判断ができなくなります。逆に利益が出ると「もっと取れる」という欲が出て、適切な利確ができなくなります。この感情的な行動が、全ての判断を狂わせます。</p>
+    </div>
+
+    <div class="highlight-box">
+      <p>プロのトレーダーが機械的に見えるのには理由があります。<br>感情を排除することこそが、<strong>安定して勝ち続ける唯一の方法</strong>だからです。</p>
+    </div>
+
+    <h2>理由③：資金管理ができていない</h2>
+
+    <div class="reason-block">
+      <div class="reason-header">
+        <div class="reason-num">3</div>
+        <h3>資金管理の失敗</h3>
+      </div>
+      <p>「ここは絶対に上がる」と確信して、口座の大部分を一発に賭ける。これが最も危険な行動です。どんなに優れたトレーダーでも、1回のトレードで全てを失えばゲームオーバーです。1回のトレードでリスクを取る量は、口座残高の2%以内が鉄則です。</p>
+    </div>
+
+    <h2>初心者とプロの違い</h2>
+
+    <div class="compare">
+      <div class="compare-col bad">
+        <h4>❌ 負けるトレーダー</h4>
+        <ul>
+          <li>損切りができない</li>
+          <li>感情でエントリー</li>
+          <li>大きなロットで一発狙い</li>
+          <li>負けを取り返そうとする</li>
+          <li>ルールが決まっていない</li>
+        </ul>
+      </div>
+      <div class="compare-col good">
+        <h4>✅ 勝てるトレーダー</h4>
+        <ul>
+          <li>即座に損切り実行</li>
+          <li>ルール通りに機械的に動く</li>
+          <li>リスクは口座の2%以内</li>
+          <li>1回の負けを気にしない</li>
+          <li>明確なエントリールールあり</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>コピートレードという選択肢</h2>
+    <p>「じゃあどうすれば勝てるの？」——この問いに対する私の答えが、コピートレードです。</p>
+    <p>自分でトレードを学ぶには、何年もの時間と、そして多くの場合は多大な損失が伴います。</p>
+    <p>でも、すでに長年の実績を持つトレーダーのトレードをそのままコピーすれば、自分がトレードの知識を持っていなくても、プロのトレードの恩恵を受けられる。</p>
+
+    <div class="highlight-box">
+      <p>自分が勝てないなら、勝てる人の力を借りればいい。<br>これが「<strong>他力本願投資</strong>」という考え方です。</p>
+    </div>
+
+    <p>「それは逃げじゃないか」と思うかもしれません。でも、投資の目的は利益を出すことです。その目的を達成できるなら、手段を選ぶ必要はないと私は思っています。</p>
+
+  </div>
+
+  <div class="article-cta">
+    <h3>実績・詳細はこちら</h3>
+    <p>他力本願投資の実際の運用成績や詳細情報はトップページでご確認ください。</p>
+    <a href="taryoku-lp.html">トップページを見る →</a>
+  </div>
+
+  <nav class="article-nav">
+    <a href="blog2.html">← 前の記事：師匠から教わったこと</a>
+    <a href="blog4.html">次の記事：努力しない副業という選択 →</a>
+  </nav>
+</main>
+
+</body>
+</html>
