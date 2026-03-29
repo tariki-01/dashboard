@@ -9,14 +9,14 @@
        ⚙️ Google Sheets 設定
        1. Google スプレッドシートを作成
        2. 以下の形式でデータを入力（A列：項目名、B列：値）:
-          A1: 証拠金       B1: 65144
-          A2: 取引期間     B2: 2025/01〜2026/03
-          A3: 勝率         B3: 78.5
-          A4: 損益         B4: 20394.26
-          A5: 平均月利     B5: 8.2
-          A6: 平均週利     B6: 2.1
-          A7: 平均日利     B7: 0.3
-          A8: 最終更新     B8: 2026/03/26
+          A1: 証拠金       B1: 10292752
+          A2: 取引期間     B2: 2026/02〜2026/03
+          A3: 勝率         B3: 66.8
+          A4: 損益         B4: 4664510
+          A5: 平均月利     B5: 43.9
+          A6: 平均週利     B6: 10.1
+          A7: 平均日利     B7: 1.5
+          A8: 最終更新     B8: 2026/03/27
        3. ファイル → 共有 → ウェブに公開 → CSV形式でコピー
        4. 下の SHEET_CSV_URL に貼り付け
        ══════════════════════════════════════════════════ -->
@@ -514,8 +514,8 @@
   <div class="stats-grid">
     <div class="stat-item">
       <div class="stat-label">💰 証拠金</div>
-      <div class="stat-value" id="stat-margin">$65,144</div>
-      <div class="stat-sub">USD / Initial Balance</div>
+      <div class="stat-value" id="stat-margin">¥10,292,752</div>
+      <div class="stat-sub">JPY / Initial Balance</div>
     </div>
     <div class="stat-item">
       <div class="stat-label">📅 取引期間</div>
@@ -530,7 +530,7 @@
     <div class="stat-item">
       <div class="stat-label">💵 損益（取引手数料含む）</div>
       <div class="stat-value positive" id="stat-pnl"><span class="loading">読込中...</span></div>
-      <div class="stat-sub">Total P&amp;L (USD)</div>
+      <div class="stat-sub">Total P&amp;L (JPY)</div>
     </div>
   </div>
   <div class="avg-grid">
@@ -766,28 +766,28 @@
    5. 下のSHEET_CSV_URLに貼り付ける
 
    スプレッドシートのデータ形式（A列：項目、B列：値）:
-   A1: 証拠金       B1: 65144
-   A2: 取引期間     B2: 2025/01〜2026/03
-   A3: 勝率         B3: 78.5
-   A4: 損益         B4: 20394.26
-   A5: 平均月利     B5: 8.2
-   A6: 平均週利     B6: 2.1
-   A7: 平均日利     B7: 0.3
-   A8: 最終更新     B8: 2026/03/26
+   A1: 証拠金       B1: 10292752
+   A2: 取引期間     B2: 2026/02〜2026/03
+   A3: 勝率         B3: 66.8
+   A4: 損益         B4: 4664510
+   A5: 平均月利     B5: 43.9
+   A6: 平均週利     B6: 10.1
+   A7: 平均日利     B7: 1.5
+   A8: 最終更新     B8: 2026/03/27
    ══════════════════════════════════════════════════ */
 
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1znS8bWoZA1EPXBCc5NiLff3_o1tkSYFdy4f95YI_nWXnOhn7tQKUdhIBJ__XLnyLGN33wSIpfJf3/pub?output=csv';
 
 // デフォルト値（スプレッドシートが未設定の場合に使用）
 const DEFAULT_STATS = {
-  '証拠金':   '65,144',
-  '取引期間': '—',
-  '勝率':     '—',
-  '損益':     '—',
-  '平均月利': '—',
-  '平均週利': '—',
-  '平均日利': '—',
-  '最終更新': '—'
+  '証拠金':   '10292752',
+  '取引期間': '2026/02〜2026/03',
+  '勝率':     '66.8',
+  '損益':     '4664510',
+  '平均月利': '43.9',
+  '平均週利': '10.1',
+  '平均日利': '1.5',
+  '最終更新': '2026/03/27'
 };
 
 // 数値フォーマット
@@ -803,7 +803,7 @@ function applyStats(data) {
 
   // 証拠金
   const margin = get('証拠金');
-  document.getElementById('stat-margin').textContent = '$' + fmtNum(margin);
+  document.getElementById('stat-margin').textContent = '¥' + fmtNum(margin);
 
   // 取引期間
   document.getElementById('stat-trades').textContent = get('取引期間') || '—';
@@ -816,7 +816,7 @@ function applyStats(data) {
   const pnl = parseFloat(get('損益'));
   const pnlEl = document.getElementById('stat-pnl');
   if (!isNaN(pnl)) {
-    pnlEl.textContent = (pnl >= 0 ? '+$' : '-$') + fmtNum(Math.abs(pnl));
+    pnlEl.textContent = (pnl >= 0 ? '+¥' : '-¥') + fmtNum(Math.abs(pnl));
     pnlEl.className = 'stat-value ' + (pnl >= 0 ? 'positive' : 'negative');
   } else {
     pnlEl.textContent = get('損益');
