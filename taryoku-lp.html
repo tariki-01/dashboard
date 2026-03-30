@@ -67,7 +67,7 @@
           A1: 証拠金       B1: 10441671
           A2: 取引期間     B2: 2026/02〜2026/03
           A3: 勝率         B3: 66.8
-          A4: 損益         B4: 4731997
+          A4: 損益         B4: 4051845
           A5: 平均月利     B5: 43.9
           A6: 平均週利     B6: 10.1
           A7: 平均日利     B7: 1.5
@@ -986,7 +986,7 @@
    A1: 証拠金       B1: 10441671
    A2: 取引期間     B2: 2026/02〜2026/03
    A3: 勝率         B3: 66.8
-   A4: 損益         B4: 4731997
+   A4: 損益         B4: 4051845
    A5: 平均月利     B5: 43.9
    A6: 平均週利     B6: 10.1
    A7: 平均日利     B7: 1.5
@@ -1000,7 +1000,7 @@ const DEFAULT_STATS = {
   '証拠金':   '10000000',
   '取引期間': '2026/02/24〜2026/03/27',
   '勝率':     '66.8',
-  '損益':     '4731997',
+  '損益':     '4051845',
   '平均月利': '43.9',
   '平均週利': '10.1',
   '平均日利': '1.5',
@@ -1035,7 +1035,7 @@ function applyStats(data) {
   (function() {
     const el = document.getElementById('hero-profit-amount');
     if (!el) return;
-    const target = parseFloat(DEFAULT_STATS['損益']) || 4731997;
+    const target = parseFloat(DEFAULT_STATS['損益']) || 4051845;
     const duration = 2200;
     const startTime = performance.now();
     function animate(now) {
@@ -1071,7 +1071,7 @@ function applyStats(data) {
   // 年利（現時点）= 損益 ÷ 初期資金 × 100（実際に出ている利益%）
   const annualEl = document.getElementById('stat-annual');
   if (annualEl) {
-    const pnlJpy = parseFloat(get('損益')) || 4731997;
+    const pnlJpy = parseFloat(get('損益')) || 4051845;
     const initJpy = 10000000;
     const returnVal = ((pnlJpy / initJpy) * 100).toFixed(1);
     annualEl.textContent = '+' + fmtNum(returnVal) + '%';

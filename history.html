@@ -227,9 +227,10 @@ const TRADES = [{"ot":"2026/2/24","sy":"USD/JPY","tp":"BUY","lot":"0.65","op":"1
   document.getElementById('winCount').textContent = wins + '件';
   document.getElementById('lossCount').textContent = losses + '件';
   document.getElementById('winRate').textContent = (wins / total * 100).toFixed(1) + '%';
-  // 合計損益はMT5実績値（LPと統一）
-  const totalPLjpy = 4731997;
-  document.getElementById('totalPL').textContent = '+¥' + totalPLjpy.toLocaleString('ja-JP');
+  // 合計損益: 全取引USD × 153.506（LPと統一）
+  const USD_JPY_TOTAL = 153.506;
+  const sumPLjpy = Math.round(sumPL * USD_JPY_TOTAL);
+  document.getElementById('totalPL').textContent = (sumPLjpy >= 0 ? '+¥' : '-¥') + Math.abs(sumPLjpy).toLocaleString('ja-JP');
 
   // Filter buttons
   document.querySelectorAll('.filter-btn').forEach(function(btn) {
