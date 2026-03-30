@@ -805,7 +805,7 @@
       <div class="stat-value positive" id="stat-monthly"><span class="loading">読込中...</span></div>
     </div>
     <div class="stat-item">
-      <div class="stat-label">📈 累計リターン</div>
+      <div class="stat-label">📈 年利（想定）</div>
       <div class="stat-value positive" id="stat-annual"><span class="loading">読込中...</span></div>
     </div>
   </div>
@@ -1046,13 +1046,12 @@ function applyStats(data) {
   const monthlyEl = document.getElementById('stat-monthly');
   if (monthlyEl) monthlyEl.textContent = '+' + fmtNum(monthly) + '%';
 
-  // 累計リターン（損益 ÷ 初期資金 × 100）
+  // 年利（想定）= 平均月利 × 12
   const annualEl = document.getElementById('stat-annual');
   if (annualEl) {
-    const pnlJpy = parseFloat(get('損益')) || 4731997;
-    const initJpy = 10000000;
-    const returnVal = ((pnlJpy / initJpy) * 100).toFixed(1);
-    annualEl.textContent = '+' + fmtNum(returnVal) + '%';
+    const monthly = parseFloat(get('平均月利')) || 43.9;
+    const annualVal = (monthly * 12).toFixed(1);
+    annualEl.textContent = '+' + fmtNum(annualVal) + '%';
   }
 
   // 最終更新
