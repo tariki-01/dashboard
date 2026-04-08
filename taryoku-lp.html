@@ -783,7 +783,7 @@
   <div class="stats-grid">
     <div class="stat-item">
       <div class="stat-label">💰 現在残高</div>
-      <div class="stat-value positive" id="stat-margin">¥14,263,111</div>
+      <div class="stat-value positive" id="stat-margin">¥12,847,183</div>
       <div style="font-size:11px;color:var(--muted);margin-top:6px;">初期資金 <span style="color:var(--muted2);font-weight:600;">¥10,000,000</span></div>
     </div>
     <div class="stat-item">
@@ -822,7 +822,7 @@
   <div class="container">
     <div class="section-label">Equity Curve</div>
     <h2 style="font-size:clamp(20px,3vw,28px);font-weight:800;color:var(--text);margin-bottom:6px;">資産推移グラフ</h2>
-    <p style="font-size:13px;color:var(--muted2);margin-bottom:32px;">初期資金 ¥10,000,000 → 現在 ¥14,263,111（MT5データ）</p>
+    <p style="font-size:13px;color:var(--muted2);margin-bottom:32px;">初期資金 ¥10,000,000 → 現在 ¥12,847,183（MT5データ）</p>
     <div style="position:relative;height:320px;max-height:320px;">
       <canvas id="equityChart"></canvas>
     </div>
@@ -895,7 +895,19 @@
 {"ot":"2026/4/2","sy":"XAUUSDe","tp":"BUY","lot":"0.3","op":"4696.47","ct":"2026/4/2","cp":"4648.51","pl":-1438.8},
 {"ot":"2026/4/2","sy":"XAUUSDe","tp":"SELL","lot":"3","op":"4653","ct":"2026/4/2","cp":"4653.26","pl":-78.0},
 {"ot":"2026/4/2","sy":"XAUUSDe","tp":"SELL","lot":"0.3","op":"4652.86","ct":"2026/4/2","cp":"4664.66","pl":-354.0},
-{"ot":"2026/4/2","sy":"XAUUSDe","tp":"SELL","lot":"0.3","op":"4654.35","ct":"2026/4/2","cp":"4664.7","pl":-310.5}];
+{"ot":"2026/4/2","sy":"XAUUSDe","tp":"SELL","lot":"0.3","op":"4654.35","ct":"2026/4/2","cp":"4664.7","pl":-310.5},
+    {"ot":"2026/4/2","sy":"XAUUSDe","tp":"BUY","lot":"0.3","op":"4665.16","ct":"2026/4/6","cp":"4690.89","pl":771.9},
+{"ot":"2026/4/2","sy":"XAUUSDe","tp":"BUY","lot":"0.3","op":"4664.69","ct":"2026/4/6","cp":"4690.69","pl":780},
+{"ot":"2026/4/2","sy":"XAUUSDe","tp":"BUY","lot":"0.3","op":"4666.32","ct":"2026/4/6","cp":"4691.22","pl":747},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"BUY","lot":"0.29","op":"4687.9","ct":"2026/4/7","cp":"4640.79","pl":-1366.19},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"BUY","lot":"0.29","op":"4687.91","ct":"2026/4/7","cp":"4640.79","pl":-1366.48},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"BUY","lot":"0.06","op":"4687.91","ct":"2026/4/7","cp":"4640.79","pl":-282.72},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"BUY","lot":"0.29","op":"4687.91","ct":"2026/4/7","cp":"4640.79","pl":-1366.48},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"BUY","lot":"0.29","op":"4687.91","ct":"2026/4/7","cp":"4640.79","pl":-1366.48},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"SELL","lot":"0.29","op":"4640.92","ct":"2026/4/7","cp":"4700.16","pl":-1717.96},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"SELL","lot":"0.29","op":"4642.27","ct":"2026/4/7","cp":"4699.49","pl":-1659.38},
+{"ot":"2026/4/7","sy":"XAUUSDe","tp":"SELL","lot":"0.29","op":"4647.45","ct":"2026/4/7","cp":"4700.16","pl":-1528.59},
+{"ot":"2026/4/8","sy":"XAUUSDe","tp":"BUY","lot":"2.87","op":"4815.32","ct":"2026/4/8","cp":"4793.88","pl":-6153.28}];
   const tbody = document.getElementById('historyBody');
   if (!tbody) return;
   let html = '';
@@ -1026,13 +1038,13 @@ const SHEET_CSV_URL = ''; // 直接DEFAULT_STATSの円換算値を使用
 // デフォルト値（スプレッドシートが未設定の場合に使用）
 const DEFAULT_STATS = {
   '証拠金':   '10000000',
-  '取引期間': '2026/02/24〜2026/04/02',
-  '勝率':     '62.5',
-  '損益':     '5154060',
-  '平均月利': '41.8',
-  '平均週利': '9.7',
-  '平均日利': '1.4',
-  '最終更新': '2026/04/02'
+  '取引期間': '2026/02/24〜2026/04/08',
+  '勝率':     '60.9',
+  '損益':     '2847183',
+  '平均月利': '19.9',
+  '平均週利': '4.6',
+  '平均日利': '0.7',
+  '最終更新': '2026/04/08'
 };
 
 // 数値フォーマット
@@ -1063,7 +1075,7 @@ function applyStats(data) {
   (function() {
     const el = document.getElementById('hero-profit-amount');
     if (!el) return;
-    const target = parseFloat(DEFAULT_STATS['損益']) || 5154060;
+    const target = parseFloat(DEFAULT_STATS['損益']) || 2847183;
     const duration = 2200;
     const startTime = performance.now();
     function animate(now) {
@@ -1152,8 +1164,8 @@ loadSheetData();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 (function() {
-  const labels = ['2/21','2/24','2/25','2/26','2/27','3/2','3/3','3/5','3/6','3/9','3/10','3/11','3/12','3/13','3/16','3/17','3/18','3/19','3/20','3/23','3/24','3/25','3/26','3/27','3/30','3/31','4/1','4/2'];
-  const values = [10000000,10078658,10699949,10780406,10888919,11099198,10769440,11114756,11499086,11724398,11892972,12210845,12399666,12468188,12649683,12627208,12298606,12398280,12944535,13118669,13086365,13283261,13433482,13499290,13184327,14733590,15077587,14456487];
+  const labels = ['2/21','2/24','2/25','2/26','2/27','3/2','3/3','3/5','3/6','3/9','3/10','3/11','3/12','3/13','3/16','3/17','3/18','3/19','3/20','3/23','3/24','3/25','3/26','3/27','3/30','3/31','4/1','4/2','4/6','4/7','4/8'];
+  const values = [10000000,10078658,10699949,10780406,10888919,11099198,10769440,11114756,11499086,11724398,11892972,12210845,12399666,12468188,12649683,12627208,12298606,12398280,12944535,13118669,13086365,13283261,13433482,13499290,13184327,14733590,15077587,14456487,14822012,13127981,12149609];
 
   const ctx = document.getElementById('equityChart');
   if (!ctx) return;
